@@ -2,6 +2,7 @@ package testPackage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -35,8 +36,15 @@ public class TaskTests {
     @Test
     public void secondTask() {
         driver.get("https://duckduckgo.com/");
+
         By logoLocator = By.xpath("//div[contains(@class,'Desktop')]//img");
         boolean isLogoDisplayed = driver.findElement(logoLocator).isDisplayed();
+
+//        driver.findElement(By.xpath("//div[contains(@class,'Desktop')]//img")).isDisplayed();
+//
+//        WebElement logo = driver.findElement(By.xpath("//div[contains(@class,'Desktop')]//img"));
+//        logo.isDisplayed();
+
         Assert.assertTrue(isLogoDisplayed, "DuckDuckGo logo is not displayed!");
     }
 
