@@ -17,8 +17,15 @@ public class TestClass {
 //        ChromeDriver driver; //x methods - Chrome browser
         driver = new ChromeDriver();
 
+        driver.quit();
+        driver.close();
+
         driver.get("https://www.google.com");
-        driver.navigate().to("https://www.google.com");
+        driver.navigate().to("https://duckduckgo.com/?t=h_&q=selenium+webdriver&ia=web");
+
+        // navigate to duckduckgo
+        // search for selenium webdriver
+        // check result for first link
 
 //        System.out.println(driver);
         driver.quit();
