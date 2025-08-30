@@ -27,6 +27,8 @@ Variations:
 //tagName[@attribute='value']
 //tagName[contains(@attribute,'subsetValue')]
 
+//*[@attribute='value']
+
 Golden Rules:
 - locators must always satisfy your business requirements
 - follow the formula
