@@ -16,6 +16,8 @@ Golden Formula:
 //tagName[@attribute='value']
 
 Variations:
+//tagName[text()='value']
+
 //tagName[@attribute]
 //tagName[@attribute1='value1'][@attribute2='value2']
 
@@ -27,7 +29,15 @@ Variations:
 //tagName[@attribute='value']
 //tagName[contains(@attribute,'subsetValue')]
 
+//tagName[contains(.,'value')]
+
 //*[@attribute='value']
+
+xpath axes:
+//tagName[@attribute='value']/parent::parentTagName
+//tagName[@attribute='value']/ancestor::ancestorTagName
+//tagName[@attribute='value']/following-sibling::followingSiblingTagName
+//tagName[@attribute='value']/preceding-sibling::precedingSiblingTagName
 
 Golden Rules:
 - locators must always satisfy your business requirements
