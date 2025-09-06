@@ -1,4 +1,4 @@
-package duckDuckGo.search;
+package duckDuckGo.search.pom1standard;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class Home {
     private final WebDriver driver;
-    private final String url = "https://duckduckgo.com/";
-    private final By searchInput = By.cssSelector("#searchbox_input");
+    private static final String url = "https://duckduckgo.com/";
+    private static final By searchInput = By.cssSelector("#searchbox_input");
 
     public Home(WebDriver driver) {
         this.driver = driver;

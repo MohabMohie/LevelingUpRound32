@@ -1,8 +1,7 @@
-package pomTestsPackage;
+package pomTestsPackage.pom1standard;
 
-import duckDuckGo.search.Home;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import duckDuckGo.search.pom1standard.Home;
+import duckDuckGo.search.pom1standard.Results;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,31 +12,34 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.Keys.ENTER;
-
 public class FirstModularTest {
     private WebDriver driver;
     private Home home;
+    private Results results;
 
     /**
      * Navigate to duckduck go, search for selenium webdriver, and assert that the first search result url is correct
      */
     @Test
-    public void testDuckDuckGoSearch() {
-//        driver.navigate().to("https://duckduckgo.com/");
+    public void searchSeleniumWebDriverAndCheckFirstResultUrl() {
+        var searchQuery = "selenium webdriver";
         home.open();
-
-        var keysToSend = "selenium webdriver";
-//        driver.findElement(searchInput).sendKeys(searchText, Keys.ENTER);
-        home.search(keysToSend);
-
-//        driver.navigate().to("https://duckduckgo.com/?t=h_&q=selenium+webdriver&ia=web");
-
-        By firstSearchResultUrl = By.xpath("(//a[@data-testid='result-title-a'])[1]");
+        home.search(searchQuery);
         String expectedUrl = "https://www.selenium.dev/documentation/webdriver/";
-        String actualUrl = driver.findElement(firstSearchResultUrl).getDomAttribute("href");
-
+        String actualUrl = results.getSearchResultUrl(1);
         Assert.assertEquals(actualUrl, expectedUrl, "First search result URL does not match expected URL");
+    }
+
+    /**
+     * Navigate to duckduck go, search for cucumberio, and assert that the second search result url is correct
+     */
+    @Test
+    public void searchCucumberIoAndCheckSecondResultUrl() {
+        var searchQuery = "cucumberio";
+        results.open(searchQuery);
+        String expectedUrl = "https://cucumber.io/";
+        String actualUrl = results.getSearchResultUrl(2);
+        Assert.assertEquals(actualUrl, expectedUrl, "Second search result URL does not match expected URL");
     }
 
     @BeforeMethod
@@ -46,10 +48,10 @@ public class FirstModularTest {
         options.setImplicitWaitTimeout(Duration.ofSeconds(10));
 
         driver
-//                = new ChromeDriver();
             = new ChromeDriver(options);
 
         home = new Home(driver);
+        results = new Results(driver);
     }
 
     @AfterMethod
